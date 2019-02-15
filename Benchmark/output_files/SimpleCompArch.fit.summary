@@ -1,0 +1,16 @@
+Fitter Status : Successful - Fri Feb 15 16:04:57 2019
+Quartus Prime Version : 17.0.2 Build 602 07/19/2017 SJ Standard Edition
+Revision Name : SimpleCompArch
+Top-level Entity Name : SimpleCompArch
+Family : Cyclone IV E
+Device : EP4CE115F29C7
+Timing Models : Final
+Total logic elements : 668 / 114,480 ( < 1 % )
+    Total combinational functions : 643 / 114,480 ( < 1 % )
+    Dedicated logic registers : 400 / 114,480 ( < 1 % )
+Total registers : 400
+Total pins : 100 / 529 ( 19 % )
+Total virtual pins : 0
+Total memory bits : 32,768 / 3,981,312 ( < 1 % )
+Embedded Multiplier 9-bit elements : 0 / 532 ( 0 % )
+Total PLLs : 0 / 4 ( 0 % )
