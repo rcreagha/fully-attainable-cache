@@ -20,6 +20,8 @@ constant jz  : std_logic_vector(3 downto 0) := "0110";
 constant halt  : std_logic_vector(3 downto 0) := "1111";
 constant readm  : std_logic_vector(3 downto 0) := "0111";
 constant mov5  : std_logic_vector(3 downto 0) := "1000"; -- indirect read
+constant mov6  : std_logic_vector(3 downto 0) := "1001"; -- immediate set 12 bit number hard coded to R15
+
 
 component CPU is
 port (	
