@@ -39,7 +39,7 @@ end;
 architecture fsm of controller is
 
   type state_type is (S0,Sdly,S1,S1a,S1b,S2,S3,S3a,S3b,S3c,S4,S4a,S4b,S5,S5a,S5b,
-			S6,S6a,S7,S7a,S7b,S8,S8a,S8b,S9,S9a,S9b,S10,S11,S11a,S11b,S12,S12a,S12b,S12c);
+			S6,S6a,S7,S7a,S7b,S8,S8a,S8b,S9,S9a,S9b,S10,S11,S11a,S11b,S12,S12a,S12b,S12c,S200,S200a);
   signal state: state_type;
   signal delaystate: state_type;
   constant memdelay: integer :=12; -- Delay memory access by 11 cycles
@@ -112,7 +112,8 @@ begin
 			    when subt =>	state <= S8; -- SUBTRACT
 			    when jz =>		state <= S9; -- JUMP if r1 = 0
 			    when halt =>	state <= S10;-- HALT
-			    when readm => 	state <= S11;-- WRITE TO OUTPUT BUFFER
+			    when readm => state <= S11;-- WRITE TO OUTPUT BUFFER
+				 when mov6 =>	state <= S200; -- immeidate write of 12 bits to R15
 			    when others => 	state <= S1;
 			    end case;
 					
@@ -183,6 +184,14 @@ begin
 			IRld_ctrl <= '0';
 			state <= S6a;
 	  when S6a =>   state <= S1;
+	  
+	  -- IMMEDIATE SET
+	  when S200 =>	RFwa_ctrl <= "1111";	
+			RFwe_ctrl <= '1'; -- RF[rn] <= imm.
+			RFs_ctrl <= "10";
+			IRld_ctrl <= '0';
+			state <= S200a;
+	  when S200a =>   state <= S1;
 	    
 	  -- ADD
 	  when S7 =>	RFr1a_ctrl <= IR_word(11 downto 8);	
